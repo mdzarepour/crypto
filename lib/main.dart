@@ -1,5 +1,5 @@
+import 'package:crypto/components/constants/solid_colors.dart';
 import 'package:crypto/screens/splash_screen.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class Application extends StatelessWidget {
   }
 
   ThemeData applicationTheme() => ThemeData(
-        scaffoldBackgroundColor: Colors.grey[900],
+        scaffoldBackgroundColor: SolidColors.backgroundColor,
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             fixedSize: Size(150, 30),
@@ -31,15 +31,15 @@ class Application extends StatelessWidget {
         ),
         iconTheme: IconThemeData(
           size: 35,
-          color: Colors.grey,
+          color: SolidColors.greyColor,
         ),
         textTheme: TextTheme(
           bodyMedium: TextStyle(
-            color: Colors.white,
+            color: SolidColors.white,
             fontSize: 20,
           ),
           bodyLarge: TextStyle(
-            color: Colors.white,
+            color: SolidColors.white,
             fontSize: 20,
           ),
         ),
