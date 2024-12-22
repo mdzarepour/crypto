@@ -11,37 +11,67 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: applicationTheme(),
+      theme: ThemeData(
+        appBarTheme: appBarTheme(),
+        scaffoldBackgroundColor: SolidColors.backgroundColor,
+        outlinedButtonTheme: borderTheme(),
+        iconTheme: iconTheme(),
+        textTheme: textTheme(),
+      ),
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
   }
 
-  ThemeData applicationTheme() => ThemeData(
-        scaffoldBackgroundColor: SolidColors.backgroundColor,
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            fixedSize: Size(150, 30),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8),
-              ),
-            ),
+  TextTheme textTheme() {
+    return TextTheme(
+        bodyMedium: TextStyle(
+          color: SolidColors.white,
+          fontSize: 20,
+        ),
+        bodyLarge: TextStyle(
+          color: SolidColors.white,
+          fontSize: 20,
+        ),
+        bodySmall: TextStyle(
+          color: SolidColors.white,
+          fontSize: 15,
+        ),
+        labelMedium: TextStyle(
+          color: SolidColors.greenColor,
+          fontSize: 20,
+        ));
+  }
+
+  IconThemeData iconTheme() {
+    return IconThemeData(
+      size: 25,
+      color: SolidColors.greyColor,
+    );
+  }
+
+  OutlinedButtonThemeData borderTheme() {
+    return OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        fixedSize: Size(150, 30),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
           ),
         ),
-        iconTheme: IconThemeData(
-          size: 35,
-          color: SolidColors.greyColor,
-        ),
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(
-            color: SolidColors.white,
-            fontSize: 20,
-          ),
-          bodyLarge: TextStyle(
-            color: SolidColors.white,
-            fontSize: 20,
-          ),
-        ),
-      );
+      ),
+    );
+  }
+
+  AppBarTheme appBarTheme() {
+    return AppBarTheme(
+      scrolledUnderElevation: 0,
+      backgroundColor: SolidColors.backgroundColor,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: SolidColors.white,
+        fontSize: 20,
+      ),
+    );
+  }
 }

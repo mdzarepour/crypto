@@ -38,8 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget connectionStatus(context, snapshot) {
     var textTheme = Theme.of(context).textTheme;
     if (snapshot.connectionState == ConnectionState.waiting) {
-      return Center(
-        child: const SpinKitThreeBounce(
+      return const Center(
+        child: SpinKitThreeBounce(
           color: Colors.grey,
           size: 20,
         ),
@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 40,
             ),
             const Text(Strings.connectionError),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             OutlinedButton(
