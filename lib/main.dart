@@ -12,6 +12,7 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        inputDecorationTheme: inputTheme(),
         appBarTheme: appBarTheme(),
         scaffoldBackgroundColor: SolidColors.backgroundColor,
         outlinedButtonTheme: borderTheme(),
@@ -20,6 +21,22 @@ class Application extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
+    );
+  }
+
+  InputDecorationTheme inputTheme() {
+    return InputDecorationTheme(
+      focusedBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(9),
+        ),
+        borderSide: BorderSide(color: SolidColors.greenColor!),
+      ),
+      border: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(9),
+        ),
+      ),
     );
   }
 

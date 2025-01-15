@@ -34,7 +34,7 @@ class ListTileWidget extends StatelessWidget {
       subtitle: Text(symbol),
       title: Text(
         name,
-        style: textTheme.labelMedium,
+        style: textTheme.bodyMedium,
       ),
       trailing: SizedBox(
         width: 150,
