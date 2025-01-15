@@ -1,7 +1,6 @@
-import 'package:crypto/components/constants/urls.dart';
 import 'package:crypto/components/models/crypto_model.dart';
+import 'package:crypto/dio_services.dart/dio_services.dart';
 import 'package:crypto/screens/main_screen.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -18,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    futureCryptoList = getData();
+    futureCryptoList = DioServices().getData();
   }
 
   @override
@@ -60,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
             OutlinedButton(
               onPressed: () {
                 setState(() {
-                  futureCryptoList = getData();
+                  futureCryptoList = DioServices().getData();
                 });
               },
               child: Text(
@@ -86,13 +85,5 @@ class _SplashScreenState extends State<SplashScreen> {
     } else {
       return const SizedBox.shrink();
     }
-  }
-
-  Future<List<CryptoModel>> getData() async {
-    Response response = await Dio().get(url);
-    List<CryptoModel> cryptoList = response.data['data']
-        .map<CryptoModel>((e) => CryptoModel.fromJsonObject(e))
-        .toList();
-    return cryptoList;
   }
 }

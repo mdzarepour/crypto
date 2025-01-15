@@ -19,21 +19,21 @@ class Application extends StatelessWidget {
         textTheme: textTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 
   TextTheme textTheme() {
     return TextTheme(
-        bodyMedium: TextStyle(
+        bodyMedium: const TextStyle(
           color: SolidColors.white,
           fontSize: 20,
         ),
-        bodyLarge: TextStyle(
+        bodyLarge: const TextStyle(
           color: SolidColors.white,
           fontSize: 20,
         ),
-        bodySmall: TextStyle(
+        bodySmall: const TextStyle(
           color: SolidColors.white,
           fontSize: 15,
         ),
@@ -44,7 +44,7 @@ class Application extends StatelessWidget {
   }
 
   IconThemeData iconTheme() {
-    return IconThemeData(
+    return const IconThemeData(
       size: 25,
       color: SolidColors.greyColor,
     );
@@ -53,8 +53,8 @@ class Application extends StatelessWidget {
   OutlinedButtonThemeData borderTheme() {
     return OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        fixedSize: Size(150, 30),
-        shape: RoundedRectangleBorder(
+        fixedSize: const Size(150, 30),
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
@@ -68,7 +68,7 @@ class Application extends StatelessWidget {
       scrolledUnderElevation: 0,
       backgroundColor: SolidColors.backgroundColor,
       centerTitle: true,
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
         color: SolidColors.white,
         fontSize: 20,
       ),
