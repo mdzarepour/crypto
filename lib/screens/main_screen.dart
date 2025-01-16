@@ -17,9 +17,9 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final TextEditingController searchController = TextEditingController();
   FocusNode focusNode = FocusNode();
-
   late List<CryptoModel> cryptoList;
   bool listStatus = false;
+
   @override
   void initState() {
     cryptoList = widget.cryptoList;
@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AppBarWidget(),
+        title: const AppBarWidget(),
       ),
       body: Center(
         child: Column(
@@ -38,6 +38,11 @@ class _MainScreenState extends State<MainScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
               child: TextField(
+                onChanged: (value) {
+                  String input = searchController.text;
+
+                  _search(input);
+                },
                 focusNode: focusNode,
                 maxLength: 20,
                 cursorColor: SolidColors.greenColor,
@@ -50,9 +55,10 @@ class _MainScreenState extends State<MainScreen> {
             Expanded(
               child: RefreshIndicator(
                 onRefresh: () async {
-                  _refreshList(cryptoList);
-                  _showSnackBar(
-                      listStatus == false ? Strings.retry : Strings.tryAgain);
+                  await _refreshList(cryptoList);
+                  _showSnackBar(listStatus == false
+                      ? Strings.refreshed
+                      : Strings.tryAgain);
                 },
                 child: GestureDetector(
                   onTap: () {
@@ -116,7 +122,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  void _refreshList(List<CryptoModel> oldList) async {
+  _refreshList(List<CryptoModel> oldList) async {
     int counter = 0;
     List<CryptoModel> newList = await DioServices().getData();
     for (int i = 0; i < oldList.length; i++) {
@@ -131,6 +137,23 @@ class _MainScreenState extends State<MainScreen> {
     }
     setState(() {
       cryptoList = newList;
+    });
+  }
+
+  _search(String input) {
+    List<CryptoModel> searchList = [];
+    searchList = widget.cryptoList.where(
+      (element) {
+        if (element.name.toLowerCase().contains(input.toLowerCase())) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+    ).toList();
+
+    setState(() {
+      cryptoList = searchList;
     });
   }
 }
