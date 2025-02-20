@@ -1,5 +1,5 @@
 # crypto pricing app
-www.expertflutter.pro cource project using www.CoinCap.io api 
+www.expertflutter.pro course project using www.CoinCap.io api 
 
 
 
